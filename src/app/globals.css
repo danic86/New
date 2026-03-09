@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brick Ember */
+  --color-brick-ember-50: #fee7e7;
+  --color-brick-ember-100: #fdcfce;
+  --color-brick-ember-200: #fa9f9e;
+  --color-brick-ember-300: #f86f6d;
+  --color-brick-ember-400: #f63f3c;
+  --color-brick-ember-500: #f40f0b;
+  --color-brick-ember-600: #c30c09;
+  --color-brick-ember-700: #920907;
+  --color-brick-ember-800: #610605;
+  --color-brick-ember-900: #310302;
+  --color-brick-ember-950: #220202;
+
+  /* Dark Walnut */
+  --color-dark-walnut-50: #feefe7;
+  --color-dark-walnut-100: #fcdfcf;
+  --color-dark-walnut-200: #f9c09f;
+  --color-dark-walnut-300: #f7a06e;
+  --color-dark-walnut-400: #f4813e;
+  --color-dark-walnut-500: #f1610e;
+  --color-dark-walnut-600: #c14e0b;
+  --color-dark-walnut-700: #913a08;
+  --color-dark-walnut-800: #602706;
+  --color-dark-walnut-900: #301303;
+  --color-dark-walnut-950: #220e02;
+
+  /* Alabaster Grey */
+  --color-alabaster-grey-50: #f2f3f2;
+  --color-alabaster-grey-100: #e4e7e6;
+  --color-alabaster-grey-200: #cacecc;
+  --color-alabaster-grey-300: #afb6b3;
+  --color-alabaster-grey-400: #959d99;
+  --color-alabaster-grey-500: #7a8580;
+  --color-alabaster-grey-600: #626a66;
+  --color-alabaster-grey-700: #49504d;
+  --color-alabaster-grey-800: #313533;
+  --color-alabaster-grey-900: #181b1a;
+  --color-alabaster-grey-950: #111312;
+
+  /* Silver */
+  --color-silver-50: #f3f2f2;
+  --color-silver-100: #e6e6e5;
+  --color-silver-200: #ceccca;
+  --color-silver-300: #b5b3b0;
+  --color-silver-400: #9c9996;
+  --color-silver-500: #83807c;
+  --color-silver-600: #696663;
+  --color-silver-700: #4f4d4a;
+  --color-silver-800: #353331;
+  --color-silver-900: #1a1a19;
+  --color-silver-950: #121211;
+
+  /* Pitch Black (yellow accent) */
+  --color-pitch-black-50: #fefde7;
+  --color-pitch-black-100: #fcfacf;
+  --color-pitch-black-200: #faf59e;
+  --color-pitch-black-300: #f7f06e;
+  --color-pitch-black-400: #f5ec3d;
+  --color-pitch-black-500: #f2e70d;
+  --color-pitch-black-600: #c2b90a;
+  --color-pitch-black-700: #918a08;
+  --color-pitch-black-800: #615c05;
+  --color-pitch-black-900: #302e03;
+  --color-pitch-black-950: #222002;
+
+  /* Font families */
+  --font-heading: "Oswald", sans-serif;
+  --font-body: "Barlow", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #0a0a0a;
+    color: var(--color-silver-50);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  .skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    z-index: 9999;
+    padding: 1rem 2rem;
+    background: var(--color-brick-ember-500);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+
+  .skip-to-content:focus {
+    top: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brick-ember-500);
+    outline-offset: 2px;
+  }
+
+  .scan-lines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    z-index: 1;
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    z-index: 1;
+  }
+
+  .thermal-glow {
+    box-shadow: 0 0 30px rgba(244, 15, 11, 0.15),
+      0 0 60px rgba(241, 97, 14, 0.08);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-silver-800);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-silver-700);
+  }
+}
